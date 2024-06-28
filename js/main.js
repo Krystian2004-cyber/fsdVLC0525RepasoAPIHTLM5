@@ -1,45 +1,40 @@
+let todosCounter = document.getElementById('todosCounter');
+let todo=document.getElementById('todo');
+let value=0;
 
-const inputName = document.getElementById("name");
+let idX=0;
 
-const saveData = () => {
 
-    //guardo en localStorage///////////////////////
-    // localStorage.setItem("myname", inputName.value)
-    ///////////////////////////////////////////////
-
-    //EN CASO DE QUERER GUARDAR UN OBJETO...OCURRE LO SIGUIENTE...//
-
-    let dia = {
-        clima: "nublado",
-        mes: "junio",
-        dia: 19
-    }
-
-    ////////////////////////////////////////////////////////
-    // COMO PODEMOS OBSERVAR, SESSIONSTORAGE SERÍA LO MISMO
-    // sessionStorage.setItem("myday", JSON.stringify(dia))
-    ////////////////////////////////////////////////////////
-
-    localStorage.setItem("myday", JSON.stringify(dia))
-};
-
-const readData = () => {
-
-    // let resultado = localStorage.getItem("myname")
-    // console.log(resultado)
-
-    //COMO LEEMOS UN OBJETO QUE SE HA GUARDADO EN FORMA DE STRING EN LOCALSTORAGE??
-
-    let myObject = JSON.parse(localStorage.getItem("myday"))
-    console.log(myObject)
+function removetodo(id)
+{
+    console.log(id);
+    document.getElementById(id).remove();
+    value--;
+    todosCounter.innerText = "todos count: " + value;
 }
 
-const cleanItem = () => {
-    //Con este método borro un elemento en concreto
-    localStorage.removeItem("myday")
+function addTodo()
+{
+    let data = document.getElementById('todo').value;
+    let div = document.createElement("div");
+    const id= Date.now();
+    div.setAttribute("id", id);
+    div.addEventListener("click",() => removetodo(id));
+    
+    
+
+
+    div.innerText = data;
+    let list = document.getElementById('todos');
+    list.appendChild(div);
+
+    todo.value="";
+    value++;
+    todosCounter.innerText = "todos count: " + value;
+
+
+
+   
 }
 
-const cleanData = () => {
-    //Esto vacía todo lo que haya en el localStorage
-    localStorage.clear()
-}
+

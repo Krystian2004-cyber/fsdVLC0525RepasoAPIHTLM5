@@ -6,13 +6,12 @@
     <title>Document</title>
   </head>
   <body>
-    <input type="text" id="name" />
+    <input type="text" id="todo" >
+            <button onclick="addTodo()">add todo</button>
+            <section id="todos"></section>
 
-        <button onclick="saveData()">save</button>
-        <button onclick="readData()">read</button>
-        <button onclick="cleanItem()">read</button>
-        <button onclick="cleanData()">clean</button>
 
+            <div id="todosCounter" style="position: absolute; margin-top: 50px;margin-left: 50px; font-size: 50px;"></div>
     <script src="./js/main.js"></script>
   </body>
 </html>
